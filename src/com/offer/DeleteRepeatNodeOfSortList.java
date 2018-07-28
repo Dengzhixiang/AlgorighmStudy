@@ -28,17 +28,33 @@ public class DeleteRepeatNodeOfSortList {
     /**
      * 删除重复结点
      * 链表-1->1->2->3->3->4->4->5 处理后为 0->1->2->5
+     * 1. 首先添加一个头节点，以方便碰到第一个，第二个节点就相同的情况
+     * 2.设置 pre ，last 指针， pre指针指向当前确定不重复的那个节点，而last指针相当于工作指针，一直往后面搜索。
      *
      * @param pHead
      * @return
      */
     public ListNode deleteDuplication(ListNode pHead) {
-        if (pHead == null) {
-            return null;
+        if (pHead == null || pHead.next == null) {
+            return pHead;
         }
         ListNode head = new ListNode(-1);
-        ListNode p = head, q = pHead;
-        p.next = pHead;
-        return pHead;
+        head.next = pHead;
+        ListNode pre = head;
+        ListNode last = head.next;
+        while (last != null) {
+            if (last.next != null && last.val == last.next.val) {
+                // 找到最后一个相同的节点
+                while (last.next != null && last.val == last.next.val) {
+                    last = last.next;
+                }
+                pre.next = last.next;
+                last = last.next;
+            } else {
+                pre = pre.next;
+                last = last.next;
+            }
+        }
+        return head.next;
     }
 }
