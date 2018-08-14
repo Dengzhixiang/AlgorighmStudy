@@ -86,7 +86,7 @@ public class AlgorithmVs {
             list[i] = (int) (Math.random() * 100000);
         }
         long start = System.currentTimeMillis();
-        MergeSort.mergeSort(list, new int[list.length], 0, list.length - 1);
+        MergeSort.mergeSort(list, 0, list.length - 1);
         long end = System.currentTimeMillis();
         System.out.println("归并排序排序耗费的时间：" + (end - start));
         display(list);

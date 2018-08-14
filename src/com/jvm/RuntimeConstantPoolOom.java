@@ -14,10 +14,10 @@ public class RuntimeConstantPoolOom {
 
     public static void main(String[] args) {
         String st1 = new StringBuilder("计算机").append("软件").toString();
-//        System.out.println(st1.intern() == st1);
+        System.out.println(st1.intern() == st1);
 
         String str2 = new StringBuilder("lo").append("ng").toString();
-//        System.out.println(str2.intern() == str2);
+        System.out.println(str2.intern() == str2);
     }
 
     private void puntimeConstantPoolOom() {
