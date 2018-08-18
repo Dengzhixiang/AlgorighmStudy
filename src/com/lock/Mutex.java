@@ -41,6 +41,10 @@ public class Mutex implements Lock, java.io.Serializable {
             setState(0);//释放资源，放弃占有状态
             return true;
         }
+
+        Condition newCondition() {
+            return new ConditionObject();
+        }
     }
 
     // 真正同步类的实现都依赖继承于AQS的自定义同步器！
@@ -76,7 +80,7 @@ public class Mutex implements Lock, java.io.Serializable {
 
     @Override
     public Condition newCondition() {
-        return null;
+        return sync.newCondition();
     }
 
     //锁是否占有状态
