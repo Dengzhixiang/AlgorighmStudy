@@ -1,145 +1,95 @@
 package com.test;
 
-import java.util.Arrays;
-import java.util.Objects;
 import java.util.Scanner;
 
 /**
  * 〈Test〉
  *
  * @author Administrator
- * @create 2018/7/7
+ * @create 2018/8/13
  * @since 1.0.0
  */
 public class Test {
 
-    public static void main(String[] args) {
-        Time t1 = new Time(10, 0);
-        Time t11 = new Time(12, 7);
-        Time t2 = new Time(10, 10);
-        Time t22 = new Time(10, 42);
-        Time t3 = new Time(10, 48);
-        Time t33 = new Time(11, 49);
-        Time t4 = new Time(10, 59);
-        Time t44 = new Time(13, 7);
-        Time t5 = new Time(12, 28);
-        Time t55 = new Time(14, 57);
-//        Time[] times = new Time[]{t1, t2, t3, t4, t5};
-//        Arrays.sort(times);
-//        System.out.println(Arrays.toString(times));
+    static class Point {
+        int x;
+        int y;
 
-
-        Work[] works = new Work[]{new Work(t1, t11), new Work(t2, t22), new Work(t3, t33)
-                , new Work(t4, t44), new Work(t5, t55)};
-        Work[] works1 = works.clone();
-        Arrays.sort(works);
-        System.out.println(Arrays.toString(works));
-
-        System.out.println(minCount(works));
-    }
-
-    public static int minCount(Work[] works) {
-        int count = 0;
-        boolean[] flag = new boolean[works.length];
-        for (int i = 0; i < works.length; ++i) {
-
-        }
-        return count;
-    }
-
-    static class Time implements Comparable {
-        int hour;
-        int minute;
-
-        public Time(int hour, int minute) {
-            this.hour = hour;
-            this.minute = minute;
-        }
-
-        @Override
-        public String toString() {
-            return "Time{" +
-                    "hour=" + hour +
-                    ", minute=" + minute +
-                    '}';
-        }
-
-        @Override
-        public int compareTo(Object o) {
-            Time orderTime = (Time) o;
-            if (this.hour != orderTime.hour) {
-                return this.hour - orderTime.hour;
-            }
-            return this.minute - orderTime.minute;
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            Time time = (Time) o;
-            return hour == time.hour &&
-                    minute == time.minute;
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(hour, minute);
-        }
-    }
-
-    static class Work implements Comparable<Work>, Cloneable {
-        Time startTime;
-        Time endTime;
-
-        public Work(Time startTime, Time endTime) {
-            this.startTime = startTime;
-            this.endTime = endTime;
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            Work work = (Work) o;
-            return startTime == work.startTime &&
-                    endTime == work.endTime;
-        }
-
-        @Override
-        public int hashCode() {
-
-            return Objects.hash(startTime, endTime);
-        }
-
-        @Override
-        public int compareTo(Work order) {
-            Work orderWork = order;
-            if (!this.startTime.equals(orderWork.startTime)) {
-                return this.startTime.compareTo(orderWork.startTime);
-            }
-            return this.endTime.compareTo(orderWork.endTime);
-        }
-
-        @Override
-        public String toString() {
-            return "Work{" +
-                    "startTime=" + startTime +
-                    ", endTime=" + endTime +
-                    '}';
+        public Point(int x, int y) {
+            this.x = x;
+            this.y = y;
         }
 
         /**
-         * 即使默认的Clone()浅拷贝能满足要求，也要重写clone()方法为public,且调用super.clone()
+         * 计算两点之间的绝对距离
+         *
+         * @param p
          * @return
-         * @throws CloneNotSupportedException
          */
-        @Override
-        public Work clone() throws CloneNotSupportedException {
-            try(Scanner in = new Scanner(System.in)) {
-
-            }
-            return (Work) super.clone();
+        public int getLength(Point p) {
+            return Math.abs(x - p.x) + Math.abs(y - p.y);
         }
+    }
+
+    public static void main(String[] args) {
+        Scanner cin = new Scanner(System.in);
+        int n = cin.nextInt();
+        // Point[0] 为派件员起点
+        Point[] points = new Point[n + 1];
+        points[0] = new Point(0, 0);
+        for (int i = 1; i < n + 1; ++i) {
+            int x = cin.nextInt();
+            int y = cin.nextInt();
+            points[i] = new Point(x, y);
+        }
+        System.out.println(send(points, n));
+    }
+
+    /**
+     * 枚举除起点外其他派件点的各种组合，并计算其距离，保留最小距离
+     *
+     * @param points
+     * @param n
+     * @return
+     */
+    private static int send(Point[] points, int n) {
+        int min = Integer.MAX_VALUE;
+        for (int i = 1; i < n + 1; ++i) {
+            for (int j = i + 1; j < n + 1; ++j) {
+                swap(points, i, j);
+                int result = calc(points);
+                if (result < min) {
+                    min = result;
+                }
+            }
+        }
+        return min;
+    }
+
+    /**
+     * 交换 Points 数组两个 Point 的位置
+     *
+     * @param points
+     * @param i
+     * @param j
+     */
+    private static void swap(Point[] points, int i, int j) {
+        Point temp = points[i];
+        points[i] = points[j];
+        points[j] = temp;
+    }
+
+    /**
+     * 按照 Ponts 数组的顺序计算距离，最后加上从最后一个派送点返回的距离
+     *
+     * @param points
+     * @return
+     */
+    private static int calc(Point[] points) {
+        int sum = 0;
+        for (int i = 1; i < points.length; ++i) {
+            sum += points[i].getLength(points[i - 1]);
+        }
+        return sum + points[points.length - 1].getLength(points[0]);
     }
 }
