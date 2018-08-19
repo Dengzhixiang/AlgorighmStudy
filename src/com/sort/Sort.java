@@ -66,7 +66,7 @@ public class Sort {
      * 最好：n
      * 平均：n2
      * 最坏: n2
-     * 不稳定
+     * 稳定
      *
      * @param array
      */

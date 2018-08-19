@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @author dengzx
  * @date 2018/8/13 21:24
  */
-public class Test4 {
+public class TwoThreadPinter {
 
     //题目3：
 /*
