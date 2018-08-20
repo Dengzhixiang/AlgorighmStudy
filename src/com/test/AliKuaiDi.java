@@ -3,13 +3,13 @@ package com.test;
 import java.util.Scanner;
 
 /**
- * 〈Test〉
+ * 〈AliKuaiDi〉
  *
  * @author Administrator
  * @create 2018/8/13
  * @since 1.0.0
  */
-public class Test {
+public class AliKuaiDi {
 
     static class Point {
         int x;
