@@ -10,7 +10,12 @@ java_pid14168.hprof
 java_pid14816.hprof
 java_pid7792.hprof
 out/production
+<<<<<<< HEAD
+.idea/compiler.xml
+.idea
+=======
 .idea
 out/production/*
 src/com/StraightIntoBatAlogorithm/
 src/com/leetcode/middlealgorithmtrain/listtrain/
+>>>>>>> 3ae83508402887b4d37f829ce55f71170cb7b654
