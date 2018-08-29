@@ -16,6 +16,7 @@ import java.util.concurrent.Semaphore;
 public class Concurrent {
 
     private static int threadTotal = 200;
+
     private static int clientTotal = 5000;
 
     private static long count = 0;

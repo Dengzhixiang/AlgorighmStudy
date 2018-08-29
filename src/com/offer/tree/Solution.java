@@ -1,13 +1,6 @@
 package com.offer.tree;
 
-import com.sun.org.apache.xml.internal.serializer.utils.SerializerMessages_fr;
-import sun.reflect.generics.tree.Tree;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
-import java.util.concurrent.Semaphore;
+import java.util.*;
 
 /**
  * ${TODO}
@@ -88,10 +81,11 @@ public class Solution {
 
     /**
      * 从上到下按层打印二叉树，同一层结点从左至右输出。每一层输出一行
+     *
      * @param treeNode
      * @return
      */
-    public static ArrayList<ArrayList<Integer> > Print2(TreeNode treeNode) {
+    public static ArrayList<ArrayList<Integer>> Print2(TreeNode treeNode) {
         ArrayList<ArrayList<Integer>> list = new ArrayList<>();
         if (treeNode == null) {
             return list;
@@ -130,22 +124,23 @@ public class Solution {
 
     /**
      * 从上到下按层打印二叉树，同一层结点从左至右输出。每一层输出一行
-     *
+     * <p>
      * 递归方法
+     *
      * @param pRoot
      * @return
      */
-    ArrayList<ArrayList<Integer> > Print3(TreeNode pRoot) {
+    ArrayList<ArrayList<Integer>> Print3(TreeNode pRoot) {
         ArrayList<ArrayList<Integer>> list = new ArrayList<>();
         depth(pRoot, 1, list);
         return list;
     }
 
     private void depth(TreeNode root, int depth, ArrayList<ArrayList<Integer>> list) {
-        if(root == null) return;
-        if(depth > list.size())
+        if (root == null) return;
+        if (depth > list.size())
             list.add(new ArrayList<Integer>());
-        list.get(depth -1).add(root.val);
+        list.get(depth - 1).add(root.val);
 
         depth(root.left, depth + 1, list);
         depth(root.right, depth + 1, list);
@@ -153,12 +148,12 @@ public class Solution {
 
 
     /**
-     *
      * 每个节点值以 "," 结尾, 遇到 null 节点以 # 作为区分
      * 算法思想：根据前序遍历规则完成序列化与反序列化。所谓序列化指的是遍历二叉树为字符串；所谓反序列化指的是依据字符串重新构造成二叉树。
-     *     依据前序遍历序列来序列化二叉树，因为前序遍历序列是从根结点开始的。当在遍历二叉树时碰到Null指针时，这些Null指针被序列化为一个特殊的字符“#”。
-     *     另外，结点之间的数值用逗号隔开
+     * 依据前序遍历序列来序列化二叉树，因为前序遍历序列是从根结点开始的。当在遍历二叉树时碰到Null指针时，这些Null指针被序列化为一个特殊的字符“#”。
+     * 另外，结点之间的数值用逗号隔开
      * 序列化
+     *
      * @param root
      * @return
      */
@@ -179,6 +174,7 @@ public class Solution {
 
     /**
      * 反序列化
+     *
      * @param str
      * @return
      */
@@ -201,8 +197,7 @@ public class Solution {
      * @param k
      * @return
      */
-    public static TreeNode KthNode(TreeNode pRoot, int k)
-    {
+    public static TreeNode KthNode(TreeNode pRoot, int k) {
         if (pRoot == null || k == 0) {
             return null;
         }
@@ -212,6 +207,7 @@ public class Solution {
     /**
      * 二叉搜索树的中序遍历为递增序列
      * 遍历过程递减 k， 若 k == 1 则当前节点为目标节点
+     *
      * @param pRoot
      * @param k
      * @return
@@ -232,4 +228,44 @@ public class Solution {
         }
         return target;
     }
+
+
+    /**
+     * 数据流的中位数
+     * <p>
+     * 用两个堆保存数据，保持两个堆的数据保持平衡（元素个数相差不超过1）大顶堆存放的数据要比小顶堆的数据小当两个推中元素为偶数个，将新加入元素加入到大顶堆，如果要加入的数据，比小顶堆的最小元素大，先将该元素插入小顶堆，然后将小顶堆的最小元素插入到大顶堆。当两个推中元素为奇数个，将新加入元素加入到小顶堆，如果要加入的数据，比大顶堆的最大元素小，先将该元素插入大顶堆，然后将大顶堆的最大元素插入到小顶堆。
+     *
+     * @param num
+     */
+    public void Insert(Integer num) {
+
+    }
+
+    public Double GetMedian() {
+        return null;
+    }
+
+
+    /**
+     * 题目：滑动窗口的最大值
+     * 思路：滑动窗口应当是队列，但为了得到滑动窗口的最大值，队列序可以从两端删除元素，因此使用双端队列。
+     *     原则：
+     *     对新来的元素k，将其与双端队列中的元素相比较
+     *     1）前面比k小的，直接移出队列（因为不再可能成为后面滑动窗口的最大值了!）,
+     *     2）前面比k大的X，比较两者下标，判断X是否已不在窗口之内，不在了，直接移出队列
+     *     队列的第一个元素是滑动窗口中的最大值
+     */
+    public ArrayList<Integer> maxInWindows(int[] num, int size) {
+        ArrayList<Integer> result = new ArrayList<>();
+        if (num == null || num.length < size|| size == 0) {
+            return result;
+        }
+        ArrayDeque<Integer> queue = new ArrayDeque<>();
+        int begin = 0;
+        for (int i = 0; i < num.length; ++i) {
+            begin = i - size + 1;
+        }
+        return null;
+    }
+
 }
