@@ -6,13 +6,13 @@ package com.sort;
  */
 public class AlgorithmVs {
     public static void main(String[] args) {
-        testQuick();//快速排序
-        testShell();//希尔排序
-        testHeap();//堆排序
+//        testQuick();//快速排序
+//        testShell();//希尔排序
+//        testHeap();//堆排序
         testMerge();//归并排序
-        testSelection();//直接排序
-        testInsert();//直接插入排序
-        testBubble();//冒泡排序
+//        testSelection();//直接排序
+//        testInsert();//直接插入排序
+//        testBubble();//冒泡排序
     }
 
     /**

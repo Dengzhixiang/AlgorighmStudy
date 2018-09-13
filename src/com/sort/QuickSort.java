@@ -1,5 +1,7 @@
 package com.sort;
 
+import java.util.Random;
+
 /**
  * 快速排序
  */
@@ -24,7 +26,6 @@ public class QuickSort {
         if (left < right) {
             // 分割数组，找到分割点
             int point = partition(list, left, right);
-
             // 递归调用，对左子数组进行快速排序
             quickSort(list, left, point - 1);
             // 递归调用，对右子数组进行快速排序
@@ -33,23 +34,26 @@ public class QuickSort {
     }
 
     /**
+     * 此处假设从小到大排序
+     * <p>
      * 分割数组，找到分割点
      */
-    public static int partition(int[] list, int left, int right) {
+    public static int partition(int[] data, int left, int right) {
         // 用数组的第一个元素作为基准数
-        int first = list[left];
+        int first = data[left];
         while (left < right) {
-            while (left < right && list[right] >= first) {
+            // 先从右往左找到第一个比基准小的数
+            while (left < right && data[right] >= first) {
                 right--;
             }
-            // 交换
-            swap(list, left, right);
-
-            while (left < right && list[left] <= first) {
+//            // 交换
+            swap(data, left, right);
+            // 再从左往右找到第一个比基准大的数
+            while (left < right && data[left] <= first) {
                 left++;
             }
             // 交换
-            swap(list, left, right);
+            swap(data, left, right);
         }
         // 返回分割点所在的位置
         return left;
@@ -77,5 +81,19 @@ public class QuickSort {
             }
             System.out.println("");
         }
+    }
+
+    public static int partitionVersionTwo(int[] A, int start, int end) {
+        Random rad = new Random();
+        int n = end - start + 1;
+        swap(A, end, start + rad.nextInt(n));
+        int j = start;
+        for (int i = start; i < end; ++i) {
+            if (A[i] < A[end]) {
+                swap(A, i, j++);
+            }
+        }
+        swap(A, end, j);
+        return j;
     }
 }

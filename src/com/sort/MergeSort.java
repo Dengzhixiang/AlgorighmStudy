@@ -66,26 +66,18 @@ public class MergeSort {
         while (i < leftArray.length && j < rightArray.length) {
             //谁比较小，谁将元素放入大数组中,移动指针，继续比较下一个
             if (leftArray[i] < rightArray[j]) {
-                arrays[k] = leftArray[i];
-                i++;
-                k++;
+                arrays[k++] = leftArray[i++];
             } else {
-                arrays[k] = rightArray[j];
-                j++;
-                k++;
+                arrays[k++] = rightArray[j++];
             }
         }
         //如果左边的数组还没比较完，右边的数都已经完了，那么将左边的数抄到大数组中(剩下的都是大数字)
         while (i < leftArray.length) {
-            arrays[k] = leftArray[i];
-            i++;
-            k++;
+            arrays[k++] = leftArray[i++];
         }
         //如果右边的数组还没比较完，左边的数都已经完了，那么将右边的数抄到大数组中(剩下的都是大数字)
         while (j < rightArray.length) {
-            arrays[k] = rightArray[j];
-            k++;
-            j++;
+            arrays[k++] = rightArray[j++];
         }
     }
 }
