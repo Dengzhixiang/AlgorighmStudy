@@ -5,6 +5,7 @@ public class TreeLinkNodeGetNext {
     public static void main(String[] args) {
 
     }
+
     /*
      * 分析二叉树的下一个节点，一共有以下情况：
      * 1.二叉树为空，则返回空；

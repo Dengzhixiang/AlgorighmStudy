@@ -41,6 +41,7 @@ public class CommonMethod {
 
     /**
      * 求最小公倍数
+     *
      * @param a
      * @param b
      * @return 最小公倍数

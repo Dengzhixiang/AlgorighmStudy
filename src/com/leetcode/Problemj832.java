@@ -1,7 +1,5 @@
 package com.leetcode;
 
-import java.util.Arrays;
-
 /**
  * 〈〉
  *
@@ -20,12 +18,11 @@ public class Problemj832 {
         for (int i = 0; i < B.length; ++i) { //每一行
             int num = B[i].length;
             for (int j = 0; j < num / 2; ++j) { //每一列
-                B[i][j] = B[i][num-j-1];
+                B[i][j] = B[i][num - j - 1];
             }
         }
         return B;
     }
-
 
 
 }

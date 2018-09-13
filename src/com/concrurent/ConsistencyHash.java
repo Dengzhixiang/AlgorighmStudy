@@ -120,7 +120,7 @@ public class ConsistencyHash {
         Random ran = new Random();
         for (int i = 0; i < 500; i++) {
             // 随便取一个数的md5
-            byte[]  ranNum = consistencyHash.computeMd5(String.valueOf(i));
+            byte[] ranNum = consistencyHash.computeMd5(String.valueOf(i));
 
             // 分配到随即的hash环上面
             long key = consistencyHash.hash(ranNum, 2);
@@ -128,17 +128,17 @@ public class ConsistencyHash {
 
             // 获取他所属服务器的信息
             // System.out.println(consistencyHash.getNodeInfo(key));
-            if (consistencyHash.getNodeInfo(key).equals("192.168.0.0-服务器0")){
+            if (consistencyHash.getNodeInfo(key).equals("192.168.0.0-服务器0")) {
                 _0++;
-            }else if (consistencyHash.getNodeInfo(key).equals("192.168.0.1-服务器1")){
+            } else if (consistencyHash.getNodeInfo(key).equals("192.168.0.1-服务器1")) {
                 _1++;
-            }else if (consistencyHash.getNodeInfo(key).equals("192.168.0.2-服务器2")){
+            } else if (consistencyHash.getNodeInfo(key).equals("192.168.0.2-服务器2")) {
                 _2++;
-            }else if (consistencyHash.getNodeInfo(key).equals("192.168.0.3-服务器3")){
+            } else if (consistencyHash.getNodeInfo(key).equals("192.168.0.3-服务器3")) {
                 _3++;
-            }else if (consistencyHash.getNodeInfo(key).equals("192.168.0.4-服务器4")){
+            } else if (consistencyHash.getNodeInfo(key).equals("192.168.0.4-服务器4")) {
                 _4++;
-            }else{
+            } else {
                 System.out.println("error");
             }
         }

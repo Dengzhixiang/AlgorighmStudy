@@ -64,7 +64,7 @@ public class Main {
 
     private static Set<Integer> getNotLinkPoints(Set<Integer> set1, int n) {
         Set<Integer> set2 = new HashSet<>();
-        for (int i = 1; i < n; ++i){
+        for (int i = 1; i < n; ++i) {
             if (!set1.contains(i)) {
                 set2.add(i);
             }

@@ -1,7 +1,6 @@
 package com.beike;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
 
@@ -38,10 +37,11 @@ public class Main {
 //        }
 //    }
 
-    static class SheTuan implements Comparable{
+    static class SheTuan implements Comparable {
         int x;
         int y;
         int number;
+
         SheTuan(int x, int y, int number) {
             this.x = x;
             this.y = y;
@@ -71,7 +71,7 @@ public class Main {
             list.add(new SheTuan(scanner.nextInt(), scanner.nextInt(), i));
         }
         Collections.sort(list);
-        
+
 //        for (int i = 0; i < list.size(); ++i) {
 //            System.out.println(list.get(i));
 //        }
@@ -105,7 +105,7 @@ public class Main {
 //        }
 
         int maxCount = 0;
-         int index = 0;
+        int index = 0;
         for (int i = 0; i < n; ++i) {
             SheTuan temp1 = list.get(i);
             int temp = 0;

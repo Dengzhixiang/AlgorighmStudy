@@ -71,7 +71,6 @@ public class DynamicProgrammingTrain {
 
 
     /**
-     *
      * @param nums
      * @return
      */

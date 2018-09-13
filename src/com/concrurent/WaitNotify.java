@@ -16,7 +16,7 @@ public class WaitNotify {
 
     }
 
-    static class Wait implements  Runnable {
+    static class Wait implements Runnable {
 
         @Override
         public void run() {

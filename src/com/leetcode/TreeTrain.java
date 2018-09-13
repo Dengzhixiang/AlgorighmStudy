@@ -1,6 +1,9 @@
 package com.leetcode;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 /**
  * 〈Leetcode 初级算法训练 -> 树训练〉
@@ -28,8 +31,9 @@ public class TreeTrain {
 
     /**
      * 验证二叉搜索树
-     *注意：左子树的所有节点都要比根节点小，而非只是其左孩子比其小，右子树同样。所以判断左右孩子是BST，并不能证明整棵树就是BST。
+     * 注意：左子树的所有节点都要比根节点小，而非只是其左孩子比其小，右子树同样。所以判断左右孩子是BST，并不能证明整棵树就是BST。
      * 思路：从根节点开始递归，遍历所有的节点。并且在每个节点处，分别遍历其左右子树，判断其左子树的最大值比其小，右子树的最小值比其大。
+     *
      * @param root
      * @return
      */
@@ -37,7 +41,7 @@ public class TreeTrain {
         if (root == null) {
             return true;
         }
-       return isVaildBSTCore(root, Long.MIN_VALUE, Long.MAX_VALUE);
+        return isVaildBSTCore(root, Long.MIN_VALUE, Long.MAX_VALUE);
     }
 
     public boolean isVaildBSTCore(TreeNode root, long low, long high) {
@@ -54,10 +58,11 @@ public class TreeTrain {
     /**
      * 对称二叉树
      * 比较二叉树的前序遍历以及其对称的前序遍历序列是否相等
-     *
+     * <p>
      * 注：前序遍历是： 根 左 右
-     *     对称的前序遍历是：根 右 左
-     *     只需遍历时调换左右子树的顺序即可
+     * 对称的前序遍历是：根 右 左
+     * 只需遍历时调换左右子树的顺序即可
+     *
      * @param root
      * @return
      */
@@ -83,6 +88,7 @@ public class TreeTrain {
 
     /**
      * 二叉树的层级遍历
+     *
      * @param root
      * @return
      */
@@ -121,7 +127,7 @@ public class TreeTrain {
 
 }
 
- class TreeNode {
+class TreeNode {
     int val;
     TreeNode left;
     TreeNode right;
@@ -130,25 +136,25 @@ public class TreeTrain {
         val = x;
     }
 
-     public static void main(String[] args) {
-         String s = "s";
-         String t = "t";
-         System.out.println(s.hashCode() == t.hashCode());
+    public static void main(String[] args) {
+        String s = "s";
+        String t = "t";
+        System.out.println(s.hashCode() == t.hashCode());
 //         Arrays.copyOf()
-     }
+    }
 
-     @Override
-     public boolean equals(Object orderObjec) {
-         if(this == orderObjec) {
+    @Override
+    public boolean equals(Object orderObjec) {
+        if (this == orderObjec) {
             return true;
-         }
-         if (orderObjec == null) {
-             return false;
-         }
-         if (!(orderObjec instanceof TreeNode)) {
-             return false;
-         }
-         TreeNode order = (TreeNode) orderObjec;
-         return this.val == order.val;
-     }
- }
+        }
+        if (orderObjec == null) {
+            return false;
+        }
+        if (!(orderObjec instanceof TreeNode)) {
+            return false;
+        }
+        TreeNode order = (TreeNode) orderObjec;
+        return this.val == order.val;
+    }
+}

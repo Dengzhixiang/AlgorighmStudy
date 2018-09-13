@@ -28,22 +28,22 @@ public class Main {
     private static void problem5() {
         Scanner cin = new Scanner(System.in);
         while (cin.hasNext()) {
-           int n = cin.nextInt();
-           int m = cin.nextInt();
-           int[][] map = new int[n][n];
-           for (int i = 0; i < m; ++i) {
-               int x = cin.nextInt();
-               int y = cin.nextInt();
-               map[x][y] = 1;
-           }
-           int sum = 0;
-           for (int i = 0; i < n; ++i) {
-               for (int j = 0; j < n; ++j) {
-                   if (i == j) {
+            int n = cin.nextInt();
+            int m = cin.nextInt();
+            int[][] map = new int[n][n];
+            for (int i = 0; i < m; ++i) {
+                int x = cin.nextInt();
+                int y = cin.nextInt();
+                map[x][y] = 1;
+            }
+            int sum = 0;
+            for (int i = 0; i < n; ++i) {
+                for (int j = 0; j < n; ++j) {
+                    if (i == j) {
 
-                   }
-               }
-           }
+                    }
+                }
+            }
             System.out.println(sum);
         }
     }

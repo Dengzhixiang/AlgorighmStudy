@@ -8,14 +8,14 @@ package com.offer;
 public class DynamicProgram {
 
 
-
     public static void main(String[] args) {
-        System.out.println(rob(new int[]{2,7,9,3,1}));
+        System.out.println(rob(new int[]{2, 7, 9, 3, 1}));
     }
 
     /**
      * dp[i]表示到i位置时不相邻数能形成的最大和
      * 递推公式dp[i] = max(num[i] + dp[i - 2], dp[i - 1])
+     *
      * @param nums
      * @return
      */

@@ -58,6 +58,7 @@ public class TheEntranceNodeOfRingList {
     /**
      * 1、如果链表中环 有n个结点，指针P1在链表上向前移动n步，然后两个指针以相同的速度向前移动。
      * 2、当第二个指针指向环的入口结点时，第一个指针已经围绕着环走了一圈又回到了入口结点
+     *
      * @param pHead
      * @param collisionNode
      * @return

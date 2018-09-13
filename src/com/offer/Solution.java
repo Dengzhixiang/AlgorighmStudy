@@ -16,12 +16,16 @@ public class Solution {
         this.nums = nums;
     }
 
-    /** Resets the array to its original configuration and return it. */
+    /**
+     * Resets the array to its original configuration and return it.
+     */
     public int[] reset() {
         return nums;
     }
 
-    /** Returns a random shuffling of the array. */
+    /**
+     * Returns a random shuffling of the array.
+     */
     public int[] shuffle() {
         int[] array = nums.clone();
         Random random = new Random();

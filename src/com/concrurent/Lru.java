@@ -47,6 +47,7 @@ public class Lru<K, V> implements Iterable<K> {
 
     /**
      * 将其删除，并添加至链表头部
+     *
      * @param key
      * @return
      */
@@ -82,6 +83,7 @@ public class Lru<K, V> implements Iterable<K> {
 
     /**
      * 添加到头部
+     *
      * @param node
      */
     private void appendHead(Node node) {
@@ -91,6 +93,7 @@ public class Lru<K, V> implements Iterable<K> {
 
     /**
      * 删除该节点
+     *
      * @param node
      */
     private void unlink(Node node) {

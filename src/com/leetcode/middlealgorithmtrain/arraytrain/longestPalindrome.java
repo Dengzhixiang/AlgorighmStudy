@@ -15,6 +15,7 @@ public class longestPalindrome {
 
     /**
      * n3 次方解法
+     *
      * @param s
      * @return
      */

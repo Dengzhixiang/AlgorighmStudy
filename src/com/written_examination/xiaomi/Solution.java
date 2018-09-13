@@ -23,7 +23,7 @@ public class Solution {
         //
         while (result > 0) {
             result &= (result - 1);
-            count ++;
+            count++;
         }
         return count;
     }

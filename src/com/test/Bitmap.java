@@ -3,7 +3,7 @@ package com.test;
 public class Bitmap {
     public static final int _1MB = 1024 * 1024;
     //每个byte记录8bit信息,也就是8个数是否存在于数组中
-    public static byte[] flags = new byte[ 512 * _1MB ];
+    public static byte[] flags = new byte[512 * _1MB];
 
 
     public static void main(String[] args) {
@@ -11,8 +11,8 @@ public class Bitmap {
         int[] array = {255, 1024, 0, 65536, 255};
 
         int index = 0;
-        for(int num : array) {
-            if(!getFlags(num)) {
+        for (int num : array) {
+            if (!getFlags(num)) {
                 //未出现的元素
                 array[index] = num;
                 index = index + 1;
