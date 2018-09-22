@@ -1,5 +1,8 @@
 package com.method;
 
+import javax.swing.tree.TreeNode;
+import java.util.Stack;
+
 /**
  * 〈常用方法合集〉
  *
@@ -50,7 +53,26 @@ public class CommonMethod {
         return a / gcd(a, b) * b;
     }
 
-    public static void bfs() {
-
+    static class TreeNode {
+        TreeNode left;
+        TreeNode right;
+        int value;
     }
+
+    public static void bfs(TreeNode root) {
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            TreeNode treeNode = stack.pop();
+            System.out.println(treeNode.value);
+            if (treeNode.right != null) {
+                stack.push(treeNode.right);
+            }
+            if (treeNode.left != null) {
+                stack.push(treeNode.left);
+            }
+        }
+    }
+
+
 }
